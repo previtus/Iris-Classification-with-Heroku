@@ -1,0 +1,32 @@
+Setup was a little bit different from the instructions ....
+This now works with python3.
+
+// init the git repo
+git clone https://github.com/gaborvecsei/Iris-Classification-with-Heroku.git
+cd Iris-Classification-with-Heroku
+
+git init
+git add --all
+git commit -m "init"
+
+heroku apps:create your-app-name
+heroku buildpacks:add https://github.com/heroku-python/conda-buildpack
+heroku config:set KERAS_BACKEND=theano
+
+git push heroku master
+
+
+## Changes?
+
+# buildpacks was different, previous one resulted in errors with pip
+# made changes to requirments.txt, adding keras
+# rewriting for python3 (as that was default with my heroku setup), commented the whole plotPrediction(...)
+
+
+## Useful commands ?
+
+# heroku logs
+# to check when there are errors on heroku server side
+
+# heroku run bash
+# to see folder structure on server, also to try python

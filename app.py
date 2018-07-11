@@ -70,12 +70,14 @@ def predict(data):
     predictionTime = e - s
     predictionName = LABEL_NAMES[predictionIndex]
 
-    base64BarChartImage = plotPrediction(rawPrediction)
+    #base64BarChartImage = plotPrediction(rawPrediction)
 
-    print "Predicted in {0:.2f} sec".format(predictionTime)
+    print ("Predicted in {0:.2f} sec".format(predictionTime))
 
-    return jsonify(prediction_index=predictionIndex, prediction_label=predictionName, run_time=predictionTime,
-                   accuracy=str(predictionAccuracy), prediction_bar_chart=base64BarChartImage)
+    return jsonify(prediction_index=int(predictionIndex), prediction_label=predictionName, run_time=float(predictionTime),
+                   accuracy=str(predictionAccuracy))
+    #return jsonify(prediction_index=predictionIndex, prediction_label=predictionName, run_time=predictionTime,
+    #               accuracy=str(predictionAccuracy))
 
 
 if __name__ == '__main__':
